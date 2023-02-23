@@ -125,7 +125,9 @@ describe("The User Profile Component", () => {
     const passwordInput = screen.getByLabelText("Password*");
     fireEvent.change(passwordInput, { target: { value: "asdf" } });
 
-    const passwordConfirmInput = screen.getByLabelText("Password Confirmation*");
+    const passwordConfirmInput = screen.getByLabelText(
+      "Password Confirmation*"
+    );
     fireEvent.change(passwordConfirmInput, { target: { value: "asdfg" } });
 
     const submitButton = screen.getByText("Update");
@@ -134,6 +136,7 @@ describe("The User Profile Component", () => {
     const errorMessage = screen.getByText(/Passwords do not match/i);
     expect(errorMessage).toBeInTheDocument();
   });
+
   test("displays an error message if passwords are not matching", () => {
     render(<UserProfileComponent />);
 
@@ -149,13 +152,17 @@ describe("The User Profile Component", () => {
     const passwordInput = screen.getByLabelText("Password*");
     fireEvent.change(passwordInput, { target: { value: "asdf" } });
 
-    const passwordConfirmInput = screen.getByLabelText("Password Confirmation*");
+    const passwordConfirmInput = screen.getByLabelText(
+      "Password Confirmation*"
+    );
     fireEvent.change(passwordConfirmInput, { target: { value: "asdf" } });
 
     const submitButton = screen.getByText("Update");
     fireEvent.click(submitButton);
 
-    const errorMessage = screen.getByText(/Thank you, Bob Smith, for updating your profile!/i);
+    const errorMessage = screen.getByText(
+      /Thank you, Bob Smith, for updating your profile!/i
+    );
     expect(errorMessage).toBeInTheDocument();
   });
 });
